@@ -1,5 +1,5 @@
 import React from 'react'
-import GameCell from '../components/GameCell'
+import GameCell from './GameCell'
 import {useNavigate} from 'react-router-dom'
 import { GameBoardStyle } from './Game.styled'
 import Button from './Button/Button'

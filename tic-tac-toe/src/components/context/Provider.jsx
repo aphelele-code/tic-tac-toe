@@ -6,8 +6,10 @@ const Provider = ({children}) => {
   return (
     <ThemeContextProvider>
       <GameContextProvider> 
-        {children}
-       </GameContextProvider>
+    
+   {children}
+    
+      </GameContextProvider>
      </ThemeContextProvider>
   )
 }

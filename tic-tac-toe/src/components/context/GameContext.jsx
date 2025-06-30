@@ -6,18 +6,18 @@ export const GameContext = createContext({})
 export const GameContextProvider = (props) => { 
     const [game, setGame] = useState({
         board: ['', '','', '', '', '', '', '', ''],
-        // player1:{
-        //     choice: 'x',
-        //     name: "Akhil"
-        // },
-        // player2: {
-        //     choice:"o",
-        //     name: 'Aphelele'
-        // },
+        player1:{
+            choice: 'x',
+            name: "Akhil"
+        },
+        player2: {
+            choice:"o",
+            name: 'Aphelele'
+        },
         turn: 'x'
     })
 
-    const updateBoard= (index) => {
+      const updateBoard= (index) => {
         let updatedBoard = game.board;
         updatedBoard[index] = game.turn
         setGame({

@@ -8,8 +8,13 @@ import { lightTheme, darkTheme } from './components/styles/Theme';
 import ThemeContext from './components/context/ThemeContext';
 import { useContext } from 'react';
 import Header from './components/Header/Header';
+import { ModalContext } from './components/context/ModalContext';
+import { ModalContextProvider } from './components/context/ModalContext';
+
+
 
 const App = () => {
+const {handleModal} = useContext(ModalContext)
   const {theme} = useContext(ThemeContext)
 console.log('theme:', theme)
   const mode = theme === 'light' ? lightTheme : darkTheme
@@ -17,14 +22,18 @@ console.log('theme:', theme)
     <ThemeProvider theme={mode} >
        
       <Router>
+ 
   <Header/>
         <Routes>
             <Route path='/' element= {<Home/>}/>
             <Route path='/game' element= {<Game/>}/>
         </Routes>
-        <GlobalStyle/> 
       
+        <ModalContextProvider/>
+            <GlobalStyle/> 
+        
       </Router>
+      <ModalContextProvider/>
     </ThemeProvider>
   )
 }

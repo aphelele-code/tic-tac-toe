@@ -10,9 +10,9 @@ const Home = () => {
   const navigate = useNavigate();
   return (
     <div>
-      {/* why in home and not in app? */}
+    
   <Container>
-  {/* how is this done? */}
+
   
 <Title >TicTacToe</Title>
 <SubTitle>Play with a friend!</SubTitle>
