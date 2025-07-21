@@ -3,7 +3,7 @@ import { useState } from "react";
 
 export const useModal = () => {
     const [modal, setModal] = useState(false);
-    const [modalContent, setModalContent] = useState(null)
+    const [modalContent, setModalContent] = useState('I AM A MODAL')
 
     const handleModal = (content = false ) => {
 setModal(!modal);

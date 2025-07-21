@@ -7,15 +7,19 @@ import { useModal } from './hooks/useModal.jsx'
 import RoundOverModal from './Modals/RoundOverModal.jsx'
 
 const GameCell = ({cellItem, index}) => {
-  const{updateBoard, game} = useContext(GameContext);
+  const{updateBoard, game, roundComplete} = useContext(GameContext);
 const {handleModal} = useModal()
   
 
   const cellClickHandler = () => {
       updateBoard(index);
-if(checkForWinner(game.board)){
-handleModal(<RoundOverModal/>)
-};};
+      const result = checkForWinner(game.board)
+      if(result){
+        roundComplete()
+        handleModal(<RoundOverModal/>)
+      }
+
+}
 
     if (cellItem === 'x'){
     return (

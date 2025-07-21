@@ -6,6 +6,7 @@ import Button from './Button/Button'
 import {Container} from './styles/General.styled'
 import { GameContext } from './context/GameContext'
 import { useContext } from 'react'
+import Player from './Player/Player'
 
 
 const Game = () => {
@@ -14,13 +15,13 @@ const Game = () => {
   const {game} = useContext(GameContext)
   return (
     <Container>
+      <Player player={game.player1}/>
     <GameBoardStyle>{game.board.map((item, index) =>{
     return <GameCell key={index} cellItem={item} index={index} />
     })
     }</GameBoardStyle>
-  <Button  onClick={ () => {
-        navigate('/')
-      }} label='Back to Home'/>
+  
+      <Player player={game.player2}/>
     </Container>
   )
 }

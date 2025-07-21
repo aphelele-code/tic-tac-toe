@@ -10,30 +10,42 @@ import { useContext } from 'react';
 import Header from './components/Header/Header';
 import { ModalContext } from './components/context/ModalContext';
 import { ModalContextProvider } from './components/context/ModalContext';
+import { TestWrapper } from './components/TestWrapper';
+import {Modal}  from './components/Modal/Modal';
+
+export const Test = () => {
+  const { handleModal } = useContext(ModalContext);
+
+  return (
+    <button onClick={() => handleModal(<Modal/>)}>
+      show Modal
+    </button>
+  );
+};
 
 
 
 const App = () => {
-const {handleModal} = useContext(ModalContext)
+
   const {theme} = useContext(ThemeContext)
 console.log('theme:', theme)
   const mode = theme === 'light' ? lightTheme : darkTheme
   return (
     <ThemeProvider theme={mode} >
-       
+        
+        <ModalContextProvider>
       <Router>
- 
+ <TestWrapper/>
   <Header/>
         <Routes>
             <Route path='/' element= {<Home/>}/>
             <Route path='/game' element= {<Game/>}/>
         </Routes>
-      
-        <ModalContextProvider/>
+     
             <GlobalStyle/> 
         
       </Router>
-      <ModalContextProvider/>
+      </ModalContextProvider>
     </ThemeProvider>
   )
 }

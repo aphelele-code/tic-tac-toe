@@ -6,7 +6,7 @@ import { ModalContext } from '../context/ModalContext'
 import { ModalContainer } from './Modal.styled'
 import { ModalBackdrop } from './Modal.styled'
 
-const ModalTemplate = () => {
+const ModalTemplate = (props) => {
   const { modalContent, modal} = useContext(ModalContext)
  
   if(modal){
@@ -14,6 +14,7 @@ const ModalTemplate = () => {
     
       <ModalBackdrop>
       <ModalContainer>
+      {props.title}
 {modalContent}
       </ModalContainer>
       </ModalBackdrop>,
