@@ -1,41 +1,30 @@
-// import { createContext } from "react";
-// import { useModal } from "../hooks/useModal";
-// import ModalTemplate from "../Modal/ModalTemplate";
-
-//  export const ModalContext = createContext({})
-
-// export const ModalContextProvider = ({children}) =>{
-//    const {modal, modalContent, handleModal}  = useModal();
-  
-//     return(
-
-//         <ModalContext.Provider value={{modal, modalContent, handleModal}}>
-// <ModalTemplate/>
-// {children}
-//         </ModalContext.Provider>
-//     );
-// }
 
 import { createContext, useState } from 'react';
-
+import ModalTemplate from '../Modal/ModalTemplate';
 export const ModalContext = createContext();
 
 export const ModalContextProvider = ({ children }) => {
   const [modalContent, setModalContent] = useState(null);
+  const [modal, setModal] = useState(false);
 
   const handleModal = (content) => {
-    setModalContent(content);
+  
+setModalContent(content);
+    setModal(true)
+  
+    
   };
 
-  return (
-    <ModalContext.Provider value={{ handleModal }}>
+  const closeModal = () => {
+    
+    setModalContent(null)
+    setModal(false)
+  }
+
+   return (
+    <ModalContext.Provider value={{ handleModal, closeModal, modal, modalContent }}>
       {children}
-      {modalContent && (
-        <div className="modal">
-          {modalContent}
-          <button onClick={() => setModalContent(null)}>Close</button>
-        </div>
-      )}
+      {modal && modalContent && <ModalTemplate>{modalContent}</ModalTemplate>}
     </ModalContext.Provider>
   );
 };

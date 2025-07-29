@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <div>
     
-  <Container>
+  <Container columnBased>
 
   
 <Title >TicTacToe</Title>

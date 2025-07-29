@@ -6,23 +6,18 @@ import { ModalContext } from '../context/ModalContext'
 import { ModalContainer } from './Modal.styled'
 import { ModalBackdrop } from './Modal.styled'
 
-const ModalTemplate = (props) => {
-  const { modalContent, modal} = useContext(ModalContext)
- 
-  if(modal){
-  return  ReactDOM.createPortal(
-    
-      <ModalBackdrop>
-      <ModalContainer>
-      {props.title}
-{modalContent}
-      </ModalContainer>
-      </ModalBackdrop>,
-    document.getElementById('modal-root')
-   ) ;
-  
-  }
-return null;
-}
+const ModalTemplate = ({ children }) => {
 
-export default ModalTemplate
+
+  return ReactDOM.createPortal(
+    <ModalBackdrop>
+      <ModalContainer>
+        {children}
+       </ModalContainer>
+    </ModalBackdrop>,
+    document.getElementById('modal-root')
+  );
+};
+
+export default ModalTemplate;
+

@@ -3,22 +3,20 @@ import {CellStyle} from './GameCell.styled.jsx'
 import { GameContext } from './context/GameContext.jsx'
 import { useContext } from 'react'
 import { checkForWinner } from './context/utils/GameUtils/index.jsx'
-import { useModal } from './hooks/useModal.jsx'
-import RoundOverModal from './Modals/RoundOverModal.jsx'
 
 const GameCell = ({cellItem, index}) => {
   const{updateBoard, game, roundComplete} = useContext(GameContext);
-const {handleModal} = useModal()
+
   
 
   const cellClickHandler = () => {
       updateBoard(index);
-      const result = checkForWinner(game.board)
-      if(result){
-        roundComplete()
-        handleModal(<RoundOverModal/>)
-      }
+      const result = checkForWinner(game.board);
+if (result) {
+  roundComplete(result);
+}
 
+      
 }
 
     if (cellItem === 'x'){

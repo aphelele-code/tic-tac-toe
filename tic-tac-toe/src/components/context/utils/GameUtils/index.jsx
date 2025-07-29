@@ -101,7 +101,11 @@ if(board[0] !== '' && board[4] !== '' ){
     }
   }
 }
-
+console.log(board)
+if(!board.includes('')){
+  return 'DRAW'
+}
+return false
 }
     
        
