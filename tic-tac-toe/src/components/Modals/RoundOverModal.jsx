@@ -10,7 +10,7 @@ const RoundOverModal = ({ winner }) => {
   const { handleModal } = useContext(ModalContext);
   const { playHoverSfx } = useContext(SfxContext);
 
-  if (!winner || !game) return null; // safety check
+  if (!winner || !game) return null; 
 
   const continueRound = () => {
     handleModal(null);

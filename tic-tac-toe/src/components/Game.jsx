@@ -16,7 +16,7 @@ const Game = () => {
   const { handleModal } = useContext(ModalContext);
 
   useEffect(() => {
-  if (game.roundWinner === null) return; // Don't do anything if the round hasn't ended
+  if (game.roundWinner === null) return; 
 
   // Only trigger the modal once per round end
   handleModal(<RoundOverModal winner={game.roundWinner} />);
