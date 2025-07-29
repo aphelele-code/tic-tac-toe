@@ -16,11 +16,11 @@ const Game = () => {
   const { handleModal } = useContext(ModalContext);
 
   useEffect(() => {
-    if (game.roundWinner) {
-       console.log('Modal Triggered for RoundOver:', game.roundWinner);
-      handleModal(<RoundOverModal />);
-    }
-  }, [game.roundWinner, handleModal]);
+  if (game.roundWinner === null) return; // Don't do anything if the round hasn't ended
+
+  // Only trigger the modal once per round end
+  handleModal(<RoundOverModal winner={game.roundWinner} />);
+}, [game.roundWinner]);
   return (
     <Container>
       <Player player={game.player1} isPlayerActive = {game.player1.choice === game.turn}/>

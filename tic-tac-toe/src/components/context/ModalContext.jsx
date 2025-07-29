@@ -1,5 +1,5 @@
 
-import { createContext, useState } from 'react';
+import { createContext, useState, useCallback } from 'react';
 import ModalTemplate from '../Modal/ModalTemplate';
 export const ModalContext = createContext();
 
@@ -7,13 +7,12 @@ export const ModalContextProvider = ({ children }) => {
   const [modalContent, setModalContent] = useState(null);
   const [modal, setModal] = useState(false);
 
-  const handleModal = (content) => {
-  
-setModalContent(content);
-    setModal(true)
-  
-    
-  };
+   const handleModal = useCallback((content) => {
+
+      setModalContent(content);
+      setModal(!!content);
+
+  }, []);
 
   const closeModal = () => {
     
